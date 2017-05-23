@@ -1,0 +1,89 @@
+@font-face { font-family: STARWARS; src: url('../../STARWARS.TTF'); }
+body {
+	background-color: black;
+	color:white;
+
+}
+#backG {
+	width: 950px;
+	background-image: url('../images/background.jpg');
+	background-size: cover;
+	height: 950px;
+	border:5px solid white;	
+}
+h1 {
+	text-align: center;
+	color:white;
+	font-size: 75px;
+	letter-spacing: 10px;
+	font-family: STARWARS, sans-serif;
+}
+p {
+	text-align: center;
+	color:black;
+
+}
+/*Controls the boxes*/
+.funBox {
+	width:150px;
+	height:150px;
+	border:2px solid green;
+	float:left;
+	margin-left: 15px;
+	margin-bottom: 5px;
+	background-color:white;
+
+}
+#secondRow {
+	clear:both;
+}
+#thirdRow {
+	clear:both;
+}
+h3 {
+	margin-left: 15px;
+	font-family: STARWARS, sans-serif;
+	letter-spacing: 3px;
+}
+button {
+	margin-left: 15px;
+	color:black;
+}
+/*Box Color Changes*/
+.boxOne {
+
+}
+.boxTwo {
+
+}
+.boxThree {
+
+}
+.boxFour {
+
+}
+/*Controls images*/
+.chewy {
+	width:68px;
+	height:auto;
+	margin-left: 38px;
+	margin-top: -9px;
+}
+.palp {
+	width: 74px;
+	height:auto;
+	margin-left: 36px;
+	margin-top: -4px;
+}
+.leia {
+	width: 74px;
+	height:auto;
+	margin-left: 36px;
+	margin-top: -7px;
+}
+.vader {
+	width: 74px;
+	height:auto;
+	margin-left: 36px;
+	margin-top: -7px;
+}
