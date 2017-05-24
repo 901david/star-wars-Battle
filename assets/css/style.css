@@ -21,6 +21,11 @@ h1 {
 #thirdRow p {
 	color:white;
 }
+.bottomText{
+	margin-top: 25px;
+	float:left;
+	margin-left: 15px;
+}
 p {
 	text-align: center;
 	color:black;
