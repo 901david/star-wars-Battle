@@ -50,7 +50,7 @@ button {
 	color:black;
 }
 /*Box Color Changes*/
-.boxOne {
+/*.boxOne {
 
 }
 .boxTwo {
@@ -61,7 +61,7 @@ button {
 }
 .boxFour {
 
-}
+}*/
 /*Controls images*/
 .chewy {
 	width:68px;
@@ -86,4 +86,17 @@ button {
 	height:auto;
 	margin-left: 36px;
 	margin-top: -7px;
+}
+/*This class hides shit*/
+.hide {
+	display:hidden;
+}
+.rowTwo{
+	
+	background-color: red;
+}
+.rowThree{
+	
+	background-color: black;
+
 }
