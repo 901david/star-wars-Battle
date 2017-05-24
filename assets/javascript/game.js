@@ -9,7 +9,7 @@ $(document).ready(function(){
 	$("#backG").append("<audio class='startUpAudio' src='assets/audio/startupmusic.mp3' autoplay></audio>"); 
 	// This Controls the first row characters
 	// This controls clicks on Chewy
-	$(".chewyOne").on("click", function () {
+	$(".chewyOne").one("click", function () {
 	$(".startUpAudio").remove();
 	$("#backG").append("<audio class='chewyPickAudio' src='assets/audio/chewy-select.mp3' autoplay></audio>");
 	$(".afterStartText").removeClass("hide");
@@ -23,7 +23,7 @@ $(document).ready(function(){
 	$(".vaderTwo").removeClass("hide");
 });
 	// This controls clicks on Palpatine
-	$(".palpOne").on("click", function () {
+	$(".palpOne").one("click", function () {
 	$(".startUpAudio").remove();
 	$("#backG").append("<audio class='chewyPickAudio' src='assets/audio/palp-select.mp3' autoplay></audio>");
 	$(".afterStartText").removeClass("hide");
@@ -37,7 +37,7 @@ $(document).ready(function(){
 	$(".vaderTwo").removeClass("hide");
 });	
 	// This controls clicks on Leia
-	$(".leiaOne").on("click", function () {
+	$(".leiaOne").one("click", function () {
 	$(".startUpAudio").remove();
 	$("#backG").append("<audio class='chewyPickAudio' src='assets/audio/leia-select.mp3' autoplay></audio>");
 	$(".afterStartText").removeClass("hide");
@@ -51,7 +51,7 @@ $(document).ready(function(){
 	$(".vaderTwo").removeClass("hide");
 });	
 	// This controls clicks on Vader
-	$(".vaderOne").on("click", function () {
+	$(".vaderOne").one("click", function () {
 	$(".startUpAudio").remove();
 	$("#backG").append("<audio class='chewyPickAudio' src='assets/audio/vader-select.mp3' autoplay></audio>");
 	$(".afterStartText").removeClass("hide");
@@ -66,40 +66,47 @@ $(document).ready(function(){
 });	
 	// This controls the Second clicks
 	// This controls The Second Chewy
-	$(".chewyTwo").on("click", function(){
+	$(".chewyTwo").one("click", function(){
 	$(".chewyTwo").addClass("hide");
+	$(".lastText").removeClass("hide");
 	$(".chewyThree").removeClass("hide");
-	$(".palpthree").addClass("hide");
-	$(".leiathree").addClass("hide");
-	$(".vaderthree").addClass("hide");
+	$(".palpThree").addClass("hide");
+	$(".leiaThree").addClass("hide");
+	$(".vaderThree").addClass("hide");
 
 });
-	$(".palpTwo").on("click", function(){
+	$(".palpTwo").one("click", function(){
 	$(".palpTwo").addClass("hide");
+	$(".lastText").removeClass("hide");
 	$(".palpThree").removeClass("hide");
-	$(".chewythree").addClass("hide");
-	$(".leiathree").addClass("hide");
-	$(".vaderthree").addClass("hide");
+	$(".chewyThree").addClass("hide");
+	$(".leiaThree").addClass("hide");
+	$(".vaderThree").addClass("hide");
 
 });
-	$(".leiaTwo").on("click", function(){
+	$(".leiaTwo").one("click", function(){
 	$(".leiaTwo").addClass("hide");
+	$(".lastText").removeClass("hide");
 	$(".leiaThree").removeClass("hide");
-	$(".palpthree").addClass("hide");
-	$(".chewythree").addClass("hide");
-	$(".vaderthree").addClass("hide");
+	$(".palpThree").addClass("hide");
+	$(".chewyThree").addClass("hide");
+	$(".vaderThree").addClass("hide");
 
 });
-	$(".vaderTwo").on("click", function(){
+	$(".vaderTwo").one("click", function(){
 	$(".vaderTwo").addClass("hide");
+	$(".lastText").removeClass("hide");
 	$(".vaderThree").removeClass("hide");
-	$(".palpthree").addClass("hide");
-	$(".leiathree").addClass("hide");
-	$(".chewythree").addClass("hide");
+	$(".palpThree").addClass("hide");
+	$(".leiaThree").addClass("hide");
+	$(".chewyThree").addClass("hide");
 
 });
 
+// his function controls when the attack button is pressed
+function pressAttack () {
 
+};
 
 
 

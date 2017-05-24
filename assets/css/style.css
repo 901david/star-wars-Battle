@@ -18,6 +18,9 @@ h1 {
 	letter-spacing: 10px;
 	font-family: STARWARS, sans-serif;
 }
+#thirdRow p {
+	color:white;
+}
 p {
 	text-align: center;
 	color:black;
@@ -46,22 +49,14 @@ h3 {
 	letter-spacing: 3px;
 }
 button {
-	margin-left: 15px;
-	color:black;
+	margin-left: 50px;
+	margin-top: 12px;
 }
-/*Box Color Changes*/
-/*.boxOne {
-
+.btn-group-lg {
+	padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
 }
-.boxTwo {
-
-}
-.boxThree {
-
-}
-.boxFour {
-
-}*/
 /*Controls images*/
 .chewy {
 	width:68px;
