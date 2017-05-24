@@ -31,6 +31,7 @@ function pressAttack () {
 	if (choseChewy) {
 			currentEnemyHealth = currentEnemyHealth - chewyAttack;
 			chewyHealth = chewyHealth - currentEnemyCounter;
+			$("#backG").append("<audio class='startUpAudio' src='assets/audio/chewy-attack.mp3' autoplay></audio>");
 			$(".cHealth").html(chewyHealth);
 			$(".ceHealth").html(currentEnemyHealth);
 			$(".peHealth").html(currentEnemyHealth);
@@ -44,6 +45,7 @@ function pressAttack () {
 	else if (chosePalp){
 			currentEnemyHealth = currentEnemyHealth - palpAttack;
 			palpHealth = palpHealth - currentEnemyCounter;
+			$("#backG").append("<audio class='startUpAudio' src='assets/audio/palp-attack.wav' autoplay></audio>");
 			$(".pHealth").html(palpHealth);
 			$(".ceHealth").html(currentEnemyHealth);
 			$(".peHealth").html(currentEnemyHealth);
@@ -56,6 +58,7 @@ function pressAttack () {
 	else if (choseLeia){
 			currentEnemyHealth = currentEnemyHealth - leiaAttack;
 			leiaHealth = leiaHealth - currentEnemyCounter;
+			$("#backG").append("<audio class='startUpAudio' src='assets/audio/leia-attack.mp3' autoplay></audio>");
 			$(".lHealth").html(leiaHealth);
 			$(".ceHealth").html(currentEnemyHealth);
 			$(".peHealth").html(currentEnemyHealth);
@@ -68,6 +71,7 @@ function pressAttack () {
 	else if (choseVader){
 			currentEnemyHealth = currentEnemyHealth - vaderAttack;
 			vaderHealth = vaderHealth - currentEnemyCounter;
+			$("#backG").append("<audio class='startUpAudio' src='assets/audio/vader-attack.wav' autoplay></audio>");
 			$(".vHealth").html(vaderHealth);
 			$(".ceHealth").html(currentEnemyHealth);
 			$(".peHealth").html(currentEnemyHealth);
