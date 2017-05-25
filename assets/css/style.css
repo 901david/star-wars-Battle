@@ -1,7 +1,7 @@
 @font-face { font-family: STARWARS; src: url('../../STARWARS.TTF'); }
 body {
 	background-color: black;
-	color:white;
+	color:black;
 
 }
 #backG {
@@ -17,20 +17,13 @@ h1 {
 	font-size: 75px;
 	letter-spacing: 10px;
 	font-family: STARWARS, sans-serif;
-}
-#thirdRow p {
-	color:white;
+	white-space: nowrap;
 }
 .bottomText{
 	margin-top: 25px;
 	float:left;
 	margin-left: 15px;
 	font-size: 18px;
-}
-p {
-	text-align: center;
-	color:black;
-
 }
 /*Controls the boxes*/
 .funBox {
@@ -41,13 +34,7 @@ p {
 	margin-left: 15px;
 	margin-bottom: 5px;
 	background-color:white;
-
-}
-#secondRow {
-	clear:both;
-}
-#thirdRow {
-	clear:both;
+	text-align: center;
 }
 h3 {
 	margin-left: 15px;
@@ -67,37 +54,30 @@ button {
 .chewy {
 	width:68px;
 	height:auto;
-	margin-left: 38px;
 	margin-top: -9px;
 }
 .palp {
 	width: 74px;
 	height:auto;
-	margin-left: 36px;
 	margin-top: -4px;
 }
 .leia {
 	width: 74px;
 	height:auto;
-	margin-left: 36px;
 	margin-top: -7px;
 }
 .vader {
 	width: 74px;
 	height:auto;
-	margin-left: 36px;
 	margin-top: -7px;
 }
 /*This class hides shit*/
 .hide {
 	display:hidden;
 }
-.rowTwo{
-	
-	background-color: red;
-}
-.rowThree{
-	
-	background-color: black;
-
+.startText {
+	font-family: STARWARS, sans-serif;
+	color:white;
+	clear:both;
+	white-space: nowrap;
 }
