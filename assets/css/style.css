@@ -89,3 +89,6 @@ button {
 	background-color: black;
 	color:white;
 }
+.moveDown {
+	clear:both;
+}

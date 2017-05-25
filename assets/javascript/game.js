@@ -64,23 +64,23 @@ function generateCharacter (x, y) {
 		$(x).append(characterBox);
 		$(characterBox).one("click", function () {
 		$(".startUpAudio").attr("src", "");
-		$("#secondRow").html(this);
-		$("#secondRow .funBox").off("click");
+		$("#secondRow").append(this);
+		$("#secondRow").off("click");
 		characters[y]["chooseSound"].play();
 		currentAttackPower = characters[y]["baseAttack"];
 		console.log(currentAttackPower);
 		currentHealth = characters[y]["health"];
 		console.log(currentHealth);
 		$("#secondRow").prepend("<h3 class='startText'>Your Character</h3>");
-		$("#secondRow").append("<h3 class='startText'>Enemies Available to Choose</h3>");
+		$("#thirdRow").append("<h3 class='startText'>Enemies Available to Choose</h3>");
 		$("#firstRow .funBox").off("click");
 		$("#firstRow .funBox").addClass("backRed");
-		$("#secondRow").append($("#firstRow .funBox"));
+		$("#thirdRow").append($("#firstRow .funBox"));
 		$("#firstRow").empty();
-		$("#secondRow .funBox").one("click", function () {
+		$("#thirdRow .funBox").one("click", function () {
 	
-			$("#secondRow .funBox").off("click");
-			$("#thirdRow").append('<h3>Fight Section</h3><button class="btn-danger btn-group-lg">Attack</button><h3>Defender Character</h3>')
+			$("#thirdRow .funBox").off("click");
+			$("#fourthRow").append('<h3 class="moveDown">Fight Section</h3><button class="btn-danger btn-group-lg">Attack</button><h3>Defender Character</h3>')
 			$("#fourthRow").append(this);
 			$("#fourthRow .funBox").addClass("backBlack");
 			currentDefender = $("#fourthRow .funBox");
