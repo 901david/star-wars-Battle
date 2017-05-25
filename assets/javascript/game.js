@@ -1,9 +1,10 @@
 // Variable Definitions
-var character;
-var characterChosen;
-var opponent;
+var currentCharacter;
+var currentDefender;
 var enemyChosen = false;
 var defeated = false;
+var currentAttackPower = 0;
+var currentHealth = 0;
 
 // Object declaration to define characters
 var characters = {
@@ -64,7 +65,12 @@ function generateCharacter (x, y) {
 		$(characterBox).one("click", function () {
 		$(".startUpAudio").attr("src", "");
 		$("#secondRow").html(this);
-		characters[y]["chooseSound"].play();		
+		$("#secondRow .funBox").off("click");
+		characters[y]["chooseSound"].play();
+		currentAttackPower = characters[y]["baseAttack"];
+		console.log(currentAttackPower);
+		currentHealth = characters[y]["health"];
+		console.log(currentHealth);
 		$("#secondRow").prepend("<h3 class='startText'>Your Character</h3>");
 		$("#secondRow").append("<h3 class='startText'>Enemies Available to Choose</h3>");
 		$("#firstRow .funBox").off("click");
@@ -72,10 +78,16 @@ function generateCharacter (x, y) {
 		$("#secondRow").append($("#firstRow .funBox"));
 		$("#firstRow").empty();
 		$("#secondRow .funBox").one("click", function () {
+	
 			$("#secondRow .funBox").off("click");
 			$("#thirdRow").append('<h3>Fight Section</h3><button class="btn-danger btn-group-lg">Attack</button><h3>Defender Character</h3>')
 			$("#fourthRow").append(this);
+			$(".btn-danger").on("click", function() {
+			characters[y].attackSound.play();
+
 		});
+		});
+
 		
 	
 
@@ -83,7 +95,7 @@ function generateCharacter (x, y) {
 };
 // This function should control your health and the enemy health as well as the text across bottom
 function pressAttack (name) {
-	
+
 };
 
 $(document).ready(function(){
@@ -95,7 +107,9 @@ $(document).ready(function(){
 	generateCharacter("#firstRow", "palp");
 	generateCharacter("#firstRow", "vader");
 	$("#firstRow").append("<h3 class='startText'>Select Your Character</h3>");
-	
+	if (characters.hasOwnProperty("picked: false")) {
+		alert("they are false")
+	}
 	
 	});
 	
