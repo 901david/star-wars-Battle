@@ -4,6 +4,7 @@ body {
 	color:black;
 
 }
+
 #backG {
 	width: 950px;
 	background-image: url('../images/background.jpg');
@@ -40,6 +41,7 @@ h3 {
 	margin-left: 15px;
 	font-family: STARWARS, sans-serif;
 	letter-spacing: 3px;
+	color:white;
 }
 button {
 	margin-left: 50px;
@@ -71,13 +73,15 @@ button {
 	height:auto;
 	margin-top: -7px;
 }
-/*This class hides shit*/
-.hide {
-	display:hidden;
-}
 .startText {
 	font-family: STARWARS, sans-serif;
 	color:white;
 	clear:both;
 	white-space: nowrap;
+}
+.backRed {
+	background-color: red;
+}
+#thirdRow {
+	clear:both;
 }

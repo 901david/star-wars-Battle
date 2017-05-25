@@ -60,19 +60,30 @@ var characters = {
 // Function to generate a character box
 function generateCharacter (x, y) {
 	var characterBox = $('<div class="funBox"><p>' + characters[y]["name"] + '</p>' + characters[y]["image"] + '<p>' + characters[y]["health"] + '</p></div>');
-	$(x).append(characterBox);
-	$(characterBox).one("click", function () {
+		$(x).append(characterBox);
+		$(characterBox).one("click", function () {
 		$(".startUpAudio").attr("src", "");
 		$("#secondRow").html(this);
 		characters[y]["chooseSound"].play();		
 		$("#secondRow").prepend("<h3 class='startText'>Your Character</h3>");
 		$("#secondRow").append("<h3 class='startText'>Enemies Available to Choose</h3>");
+		$("#firstRow .funBox").off("click");
+		$("#firstRow .funBox").addClass("backRed");
 		$("#secondRow").append($("#firstRow .funBox"));
 		$("#firstRow").empty();
+		$("#secondRow .funBox").one("click", function () {
+			$("#secondRow .funBox").off("click");
+			$("#thirdRow").append('<h3>Fight Section</h3><button class="btn-danger btn-group-lg">Attack</button><h3>Defender Character</h3>')
+			$("#fourthRow").append(this);
+		});
 		
 	
 
 	});
+};
+// This function should control your health and the enemy health as well as the text across bottom
+function pressAttack (name) {
+	
 };
 
 $(document).ready(function(){
