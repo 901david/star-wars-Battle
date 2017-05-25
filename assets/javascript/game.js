@@ -82,8 +82,12 @@ function generateCharacter (x, y) {
 			$("#secondRow .funBox").off("click");
 			$("#thirdRow").append('<h3>Fight Section</h3><button class="btn-danger btn-group-lg">Attack</button><h3>Defender Character</h3>')
 			$("#fourthRow").append(this);
+			$("#fourthRow .funBox").addClass("backBlack");
+			currentDefender = $("#fourthRow .funBox");
+			console.log(currentDefender);
 			$(".btn-danger").on("click", function() {
 			characters[y].attackSound.play();
+
 
 		});
 		});
