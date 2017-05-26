@@ -9,6 +9,8 @@ var currentEnemyName;
 var baseAttackPower;
 var increaseAttack;
 var nameValue;
+var characterWinSound;
+defeatedEnemy = false;
 
 
 // Object declaration to define characters
@@ -78,6 +80,7 @@ function generateCharacter (x, y) {
 		characters[y]["chooseSound"].play();
 		currentCharacter = characters[y]["name"];
 		console.log(currentCharacter);
+		characterWinSound = characters[y]["winSound"];
 		baseAttackPower = characters[y]["baseAttack"];
 		increaseAttack = characters[y]["attack"];
 		console.log(baseAttackPower);
@@ -92,7 +95,7 @@ function generateCharacter (x, y) {
 		$("#thirdRow").append($("#firstRow .funBox"));
 		$("#firstRow").empty();
 		$("#thirdRow .funBox").one("click", function () {
-			$("#thirdRow .funBox").off("click");
+			// $("#thirdRow .funBox").off("click");
 			$("#fourthRow").append('<h3 class="moveDown">Fight Section</h3><button class="btn-danger btn-group-lg">Attack</button><h3>Defender Character</h3>')
 			$("#fourthRow").append(this);
 			nameValue = $('#fourthRow div').attr('value');
@@ -102,9 +105,10 @@ function generateCharacter (x, y) {
 			$(".btn-danger").on("click", function() {
 			characters[y].attackSound.play();
 			attackDefender();
-
+			checkGameStatus();
 
 		});
+		
 		});
 
 		
@@ -156,8 +160,55 @@ function attackDefender () {
 	console.log("Def Health " + currentDefenderHealth);
 	$("#fifthRow").html("<p>You attacked " + currentEnemyName + " for " + currentAttackPower + " damage.</p>" + "<p>" + currentEnemyName + " attacked you back for " + currentDefenderAttack + " damage.</p>");
 	$("#fourthRow .health").html(currentDefenderHealth);
+	$("#secondRow .health").html(currentHealth);
+	checkGameStatus();
 }
+function checkGameStatus () {
+	if (currentDefenderHealth <= 0) {
+		characterWinSound.play();
+		defeatedEnemy = true;
+		$("#fourthRow").empty();
+		if (defeatedEnemy) {
+			defeated++;
+		$("#fifthRow").html("<p>You defeated " + currentEnemyName + ".</p><p>Click another enemy to continue.</p>");
+	}
 
+}
+	if (defeated >= 4) {
+		$("#backG").append("<audio class='startUpAudio' src='assets/audio/startupmusic.mp3' autoplay></audio>");
+		$("#fifthRow").html("<p>YOU WIN!!!</p><p>The Force is strong with you.  Press reset to try again</p>")
+		$("#fifthRow").append("<button class='btn-warning btn-group-lg'>Reset</button>");
+		$(".btn-warning").on("click", function() {
+			location.reload(true);
+	});
+
+	}
+	else if (currentHealth <= 0) {
+		$("#fifthRow").html("<p>Unfortunately.....YOU LOSE!!</p><p>You must learn to control the Force.  Press reset to try again</p>")
+		$("#fifthRow").append("<button class='btn-warning btn-group-lg'>Reset</button>");
+		$(".btn-warning").on("click", function() {
+			location.reload(true);
+	});
+	}
+}
+function keepTheGameGoing () {
+	$(".funBox .backRed").on("click", function () {
+			// $(".funBox .backRed").off("click");
+			$("#fourthRow").append('<h3 class="moveDown">Fight Section</h3><button class="btn-danger btn-group-lg">Attack</button><h3>Defender Character</h3>')
+			$("#fourthRow").append(this);
+			nameValue = $('#fourthRow div').attr('value');
+			console.log(nameValue);
+			whichDefender();
+			$("#fourthRow .funBox").addClass("backBlack");
+			$(".btn-danger").on("click", function() {
+			characters[y].attackSound.play();
+			attackDefender();
+			checkGameStatus();
+
+		});
+		
+		});
+}
 $(document).ready(function(){
 	//This will control autoplay of Theme once you get to site.
 	$("#backG").append("<audio class='startUpAudio' src='assets/audio/startupmusic.mp3' autoplay></audio>");
@@ -167,10 +218,7 @@ $(document).ready(function(){
 	generateCharacter("#firstRow", "palp");
 	generateCharacter("#firstRow", "vader");
 	$("#firstRow").append("<h3 class='startText'>Select Your Character</h3>");
-	if (characters.hasOwnProperty("picked: false")) {
-		alert("they are false")
-	}
-	
+	// keepTheGameGoing();
 	});
 	
 
