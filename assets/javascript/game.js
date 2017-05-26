@@ -2,7 +2,7 @@
 var currentCharacter;
 var currentDefenderHealth;
 var currentDefenderAttack;
-var defeated = 0;
+var defeated = -2;
 var currentAttackPower;
 var currentHealth = 0;
 var currentEnemyName;
@@ -170,6 +170,7 @@ function checkGameStatus () {
 		$("#fourthRow").empty();
 		if (defeatedEnemy) {
 			defeated++;
+			console.log("Defeated" + defeated);
 		$("#fifthRow").html("<p>You defeated " + currentEnemyName + ".</p><p>Click another enemy to continue.</p>");
 	}
 
