@@ -69,7 +69,7 @@ var characters = {
 
 // Function to generate a character box
 function generateCharacter (x, y) {
-	var characterBox = $('<div class="funBox" value="' + characters[y]["value"] + '"><p>' + characters[y]["name"] + '</p>' + characters[y]["image"] + '<p>' + characters[y]["health"] + '</p></div>');
+	var characterBox = $('<div class="funBox" value="' + characters[y]["value"] + '"><p>' + characters[y]["name"] + '</p>' + characters[y]["image"] + '<p class="health">' + characters[y]["health"] + '</p></div>');
 		$(x).append(characterBox);
 		$(characterBox).one("click", function () {
 		$(".startUpAudio").attr("src", "");
@@ -154,7 +154,8 @@ function attackDefender () {
 	console.log("Att Power " + currentAttackPower);
 	console.log("Char Health " + currentHealth);
 	console.log("Def Health " + currentDefenderHealth);
-	$(".bottomText").html("<p>You attacked " + currentEnemyName + " for " + currentAttackPower + " damage.</p>" + "<p>" + currentEnemyName + " attacked you back for " + currentDefenderAttack + " damage.</p>");
+	$("#fifthRow").html("<p>You attacked " + currentEnemyName + " for " + currentAttackPower + " damage.</p>" + "<p>" + currentEnemyName + " attacked you back for " + currentDefenderAttack + " damage.</p>");
+	$("#fourthRow .health").html(currentDefenderHealth);
 }
 
 $(document).ready(function(){
