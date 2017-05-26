@@ -44,10 +44,10 @@ var characters = {
 		leia: {
 			name: "Princess Leia",
 			image: '<img src="assets/images/leia.jpg" alt="Princess Leia" class="leia">',
-			baseAttack: 5,
-			attack: 5,
+			baseAttack: 7,
+			attack: 7,
 			counterAttack: 5, 
-			health: 100,
+			health: 160,
 			chooseSound: new Audio('assets/audio/leia-select.mp3'),
 			attackSound: new Audio('assets/audio/leia-attack.mp3'),
 			winSound:new Audio('#'),
