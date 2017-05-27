@@ -63,12 +63,14 @@ var characters = {
 		}
 // Function to generate a character box and begin pushing us through the majority of the game
 function generateCharacter (x, y) {
-	var characterBox = $('<div class="funBox" value="' + characters[y]["value"] + '"><p>' + characters[y]["name"] + '</p>' + characters[y]["image"] + '<p class="health">' + characters[y]["health"] + '</p></div>').show().fadeIn(3000);
+		// Initializes the characters on the screen
+		var characterBox = $('<div class="funBox" value="' + characters[y]["value"] + '"><p>' + characters[y]["name"] + '</p>' + characters[y]["image"] + '<p class="health">' + characters[y]["health"] + '</p></div>').show().fadeIn(3000);
 		$(x).append(characterBox);
 		$(characterBox).one("click", function () {
 		$(".startUpAudio").attr("src", "");
 		$("#secondRow").append(this);
 		characters[y]["chooseSound"].play();
+		// Storing info about character selection to be used later
 		currentCharacter = characters[y]["name"];
 		console.log(currentCharacter);
 		characterWinSound = characters[y]["winSound"];
@@ -79,15 +81,17 @@ function generateCharacter (x, y) {
 		console.log(currentHealth);
 		currentAttackPower = baseAttackPower;
 		console.log(currentAttackPower);
+		// Starts defining the next row of characters which are now enemies
 		$("#secondRow").prepend("<h3 class='startText'>Your Character</h3>");
 		$("#thirdRow").append("<h3 class='startText'>Enemies Available to Choose</h3>");
 		$("#firstRow .funBox").off("click");
 		$("#firstRow .funBox").addClass("backRed");
 		$("#thirdRow").append($("#firstRow .funBox"));
 		$("#firstRow").empty();
-		$("#thirdRow .funBox").one("click", function () {
+		// Defines what happens when you click on an enemy
+		$("#thirdRow .backRed").one("click", function () {
 			$("#backG").append("<audio class='startUpAudio' src='assets/audio/select-enemy-to-battle.mp3' autoplay></audio>");
-			$("#thirdRow").off("click", ".funBox");
+			$(".backRed").off("click");
 			$("#fourthRow").append('<h3 class="moveDown">Fight Section</h3><button class="btn-danger btn-group-lg">Attack</button><h3>Defender Character</h3>').show().fadeIn(1000);
 			$("#fourthRow").append(this);
 			nameValue = $('#fourthRow div').attr('value');
@@ -130,6 +134,7 @@ function checkGameStatus () {
 			defeated++;
 			console.log("Defeated" + defeated);
 		$("#fifthRow").html("<p>You defeated " + currentEnemyName + ".</p><p>Click another enemy to continue.</p>");
+		$(".backRed").off("click");
 
 };
 
@@ -161,7 +166,7 @@ $(document).ready(function(){
 	generateCharacter("#firstRow", "leia");
 	generateCharacter("#firstRow", "palp");
 	generateCharacter("#firstRow", "vader");
-	$("#firstRow").append("<h3 class='startText'>Select Your Character</h3>").show().fadeIn(3000);
+	$("#firstRow").append("<h3 class='startText'>Select Your Character</h3>");
 	
 	});
 	
