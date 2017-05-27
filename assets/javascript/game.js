@@ -2,7 +2,7 @@
 var currentCharacter;
 var currentDefenderHealth;
 var currentDefenderAttack;
-var defeated = -2;
+var defeated = 0;
 var currentAttackPower;
 var currentHealth = 0;
 var currentEnemyName;
@@ -10,10 +10,7 @@ var baseAttackPower;
 var increaseAttack;
 var nameValue;
 var characterWinSound;
-defeatedEnemy = false;
-
-
-// Object declaration to define characters
+// Object declaration to define characters/win sounds etc
 var characters = {
 		chewy: {
 			name: "Chewbaca",
@@ -25,20 +22,18 @@ var characters = {
 			chooseSound: new Audio('assets/audio/chewy-select.mp3'),
 			attackSound: new Audio('assets/audio/chewy-attack.mp3'),
 			winSound:new Audio('assets/audio/chewy-win.mp3'),
-			picked: false,
 			value: "chewy"
 				},
 		palp: {
 			name: "Emperor Palpatine",
 			image: '<img src="assets/images/palp.png" alt="Emperor Palpatine" class="palp">',
-			baseAttack: 8,
-			attack: 8,
+			baseAttack: 9,
+			attack: 9,
 			counterAttack: 12, 
 			health: 150,
 			chooseSound: new Audio('assets/audio/palp-select.mp3'),
 			attackSound: new Audio('assets/audio/palp-attack.wav'),
-			winSound:new Audio('#'),
-			picked: false,
+			winSound:new Audio('assets/audio/palp-win.wav'),
 			value: "palp"
 				},
 		leia: {
@@ -50,8 +45,7 @@ var characters = {
 			health: 160,
 			chooseSound: new Audio('assets/audio/leia-select.mp3'),
 			attackSound: new Audio('assets/audio/leia-attack.mp3'),
-			winSound:new Audio('#'),
-			picked: false,
+			winSound:new Audio('assets/audio/leia-win.mp3'),
 			value: "leia"
 				},
 		vader: {
@@ -64,12 +58,10 @@ var characters = {
 			chooseSound: new Audio('assets/audio/vader-select.mp3'),
 			attackSound: new Audio('assets/audio/vader-attack.wav'),
 			winSound:new Audio('assets/audio/vader-win.mp3'),
-			picked: false,
 			value: "vader"
-				}
+				},
 		}
-
-// Function to generate a character box
+// Function to generate a character box and begin pushing us through the majority of the game
 function generateCharacter (x, y) {
 	var characterBox = $('<div class="funBox" value="' + characters[y]["value"] + '"><p>' + characters[y]["name"] + '</p>' + characters[y]["image"] + '<p class="health">' + characters[y]["health"] + '</p></div>');
 		$(x).append(characterBox);
@@ -95,62 +87,27 @@ function generateCharacter (x, y) {
 		$("#thirdRow").append($("#firstRow .funBox"));
 		$("#firstRow").empty();
 		$("#thirdRow .funBox").one("click", function () {
+			$("#backG").append("<audio class='startUpAudio' src='assets/audio/select-enemy-to-battle.mp3' autoplay></audio>");
 			// $("#thirdRow .funBox").off("click");
 			$("#fourthRow").append('<h3 class="moveDown">Fight Section</h3><button class="btn-danger btn-group-lg">Attack</button><h3>Defender Character</h3>')
 			$("#fourthRow").append(this);
 			nameValue = $('#fourthRow div').attr('value');
 			console.log(nameValue);
-			whichDefender();
+			currentEnemyName = characters[nameValue]["name"];
+			currentDefenderHealth = characters[nameValue]["health"];
+			currentDefenderAttack = characters[nameValue]["counterAttack"];
+			console.log(currentDefenderAttack)
+			console.log(currentDefenderHealth)
+			console.log(currentEnemyName);
 			$("#fourthRow .funBox").addClass("backBlack");
 			$(".btn-danger").on("click", function() {
 			characters[y].attackSound.play();
 			attackDefender();
-			checkGameStatus();
-
 		});
-		
 		});
-
-		
-	
-
 	});
 };
-// This function should control your health and the enemy health as well as the text across bottom
-function whichDefender () {
-	if (nameValue ===  'vader') {
-		currentEnemyName = "Darth Vader";
-		currentDefenderHealth = 180;
-		currentDefenderAttack = 15;
-		console.log(currentDefenderAttack)
-		console.log(currentDefenderHealth)
-		console.log(currentEnemyName);
-	}
-	else if (nameValue ===  'leia') {
-		currentEnemyName = "Princess Leia";
-		currentDefenderHealth = 100;
-		currentDefenderAttack = 5;
-		console.log(currentDefenderAttack)
-		console.log(currentDefenderHealth)
-		console.log(currentEnemyName);
-	}
-	else if (nameValue ===  'palp') {
-		currentEnemyName = "Emperor Palpatine";
-		currentDefenderHealth = 150;
-		currentDefenderAttack = 12;
-		console.log(currentDefenderAttack)
-		console.log(currentDefenderHealth)
-	}
-	else if (nameValue ===  'chewy') {
-		currentEnemyName = "Chewbaca";
-		currentDefenderHealth = 120;
-		currentDefenderAttack = 10;
-		console.log(currentDefenderAttack)
-		console.log(currentDefenderHealth)
-		console.log(currentEnemyName);
-	}
-
-};
+// This function dictates what happens when attack button pressed
 function attackDefender () {
 	currentHealth = currentHealth - currentDefenderAttack;
 	currentDefenderHealth = currentDefenderHealth - currentAttackPower;
@@ -163,6 +120,7 @@ function attackDefender () {
 	$("#secondRow .health").html(currentHealth);
 	checkGameStatus();
 }
+// This function dictates the sounds that play when an enemy is defeated and then whether you win or lose
 function checkGameStatus () {
 	if (currentDefenderHealth <= 0) {
 		characterWinSound.play();
@@ -172,44 +130,28 @@ function checkGameStatus () {
 			defeated++;
 			console.log("Defeated" + defeated);
 		$("#fifthRow").html("<p>You defeated " + currentEnemyName + ".</p><p>Click another enemy to continue.</p>");
-	}
+};
 
 }
-	if (defeated >= 4) {
-		$("#backG").append("<audio class='startUpAudio' src='assets/audio/startupmusic.mp3' autoplay></audio>");
+	if (defeated >= 3) {
+		$("#backG").append("<audio class='startUpAudio' src='assets/audio/win-overall-song.mp3' autoplay></audio>");
 		$("#fifthRow").html("<p>YOU WIN!!!</p><p>The Force is strong with you.  Press reset to try again</p>")
 		$("#fifthRow").append("<button class='btn-warning btn-group-lg'>Reset</button>");
 		$(".btn-warning").on("click", function() {
 			location.reload(true);
 	});
 
-	}
-	else if (currentHealth <= 0) {
+	};
+	if (currentHealth <= 0) {
+		$("#backG").append("<audio class='startUpAudio' src='assets/audio/lose-comment.mp3' autoplay></audio>");
 		$("#fifthRow").html("<p>Unfortunately.....YOU LOSE!!</p><p>You must learn to control the Force.  Press reset to try again</p>")
 		$("#fifthRow").append("<button class='btn-warning btn-group-lg'>Reset</button>");
 		$(".btn-warning").on("click", function() {
 			location.reload(true);
 	});
-	}
-}
-function keepTheGameGoing () {
-	$(".funBox .backRed").on("click", function () {
-			// $(".funBox .backRed").off("click");
-			$("#fourthRow").append('<h3 class="moveDown">Fight Section</h3><button class="btn-danger btn-group-lg">Attack</button><h3>Defender Character</h3>')
-			$("#fourthRow").append(this);
-			nameValue = $('#fourthRow div').attr('value');
-			console.log(nameValue);
-			whichDefender();
-			$("#fourthRow .funBox").addClass("backBlack");
-			$(".btn-danger").on("click", function() {
-			characters[y].attackSound.play();
-			attackDefender();
-			checkGameStatus();
+	};
+};
 
-		});
-		
-		});
-}
 $(document).ready(function(){
 	//This will control autoplay of Theme once you get to site.
 	$("#backG").append("<audio class='startUpAudio' src='assets/audio/startupmusic.mp3' autoplay></audio>");
@@ -219,7 +161,7 @@ $(document).ready(function(){
 	generateCharacter("#firstRow", "palp");
 	generateCharacter("#firstRow", "vader");
 	$("#firstRow").append("<h3 class='startText'>Select Your Character</h3>");
-	// keepTheGameGoing();
+	
 	});
 	
 
