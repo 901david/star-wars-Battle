@@ -63,12 +63,11 @@ var characters = {
 		}
 // Function to generate a character box and begin pushing us through the majority of the game
 function generateCharacter (x, y) {
-	var characterBox = $('<div class="funBox" value="' + characters[y]["value"] + '"><p>' + characters[y]["name"] + '</p>' + characters[y]["image"] + '<p class="health">' + characters[y]["health"] + '</p></div>');
+	var characterBox = $('<div class="funBox" value="' + characters[y]["value"] + '"><p>' + characters[y]["name"] + '</p>' + characters[y]["image"] + '<p class="health">' + characters[y]["health"] + '</p></div>').show().fadeIn(3000);
 		$(x).append(characterBox);
 		$(characterBox).one("click", function () {
 		$(".startUpAudio").attr("src", "");
 		$("#secondRow").append(this);
-		$("#secondRow").off("click");
 		characters[y]["chooseSound"].play();
 		currentCharacter = characters[y]["name"];
 		console.log(currentCharacter);
@@ -88,8 +87,8 @@ function generateCharacter (x, y) {
 		$("#firstRow").empty();
 		$("#thirdRow .funBox").one("click", function () {
 			$("#backG").append("<audio class='startUpAudio' src='assets/audio/select-enemy-to-battle.mp3' autoplay></audio>");
-			// $("#thirdRow .funBox").off("click");
-			$("#fourthRow").append('<h3 class="moveDown">Fight Section</h3><button class="btn-danger btn-group-lg">Attack</button><h3>Defender Character</h3>')
+			$("#thirdRow").off("click", ".funBox");
+			$("#fourthRow").append('<h3 class="moveDown">Fight Section</h3><button class="btn-danger btn-group-lg">Attack</button><h3>Defender Character</h3>').show().fadeIn(1000);
 			$("#fourthRow").append(this);
 			nameValue = $('#fourthRow div').attr('value');
 			console.log(nameValue);
@@ -105,6 +104,7 @@ function generateCharacter (x, y) {
 			attackDefender();
 		});
 		});
+	
 	});
 };
 // This function dictates what happens when attack button pressed
@@ -130,6 +130,7 @@ function checkGameStatus () {
 			defeated++;
 			console.log("Defeated" + defeated);
 		$("#fifthRow").html("<p>You defeated " + currentEnemyName + ".</p><p>Click another enemy to continue.</p>");
+
 };
 
 }
@@ -160,7 +161,7 @@ $(document).ready(function(){
 	generateCharacter("#firstRow", "leia");
 	generateCharacter("#firstRow", "palp");
 	generateCharacter("#firstRow", "vader");
-	$("#firstRow").append("<h3 class='startText'>Select Your Character</h3>");
+	$("#firstRow").append("<h3 class='startText'>Select Your Character</h3>").show().fadeIn(3000);
 	
 	});
 	
