@@ -89,9 +89,9 @@ function generateCharacter (x, y) {
 		$("#thirdRow").append($("#firstRow .funBox"));
 		$("#firstRow").empty();
 		// Defines what happens when you click on an enemy
-		$("#thirdRow .backRed").one("click", function () {
-			$("#backG").append("<audio class='startUpAudio' src='assets/audio/select-enemy-to-battle.mp3' autoplay></audio>");
-			$(".backRed").off("click");
+		$("#thirdRow .backRed").on("click", function () {
+			
+			if (currentEnemyName == undefined) {
 			$("#fourthRow").append('<h3 class="moveDown">Fight Section</h3><button class="btn-danger btn-group-lg">Attack</button><h3>Defender Character</h3>').show().fadeIn(1000);
 			$("#fourthRow").append(this);
 			nameValue = $('#fourthRow div').attr('value');
@@ -107,8 +107,8 @@ function generateCharacter (x, y) {
 			characters[y].attackSound.play();
 			attackDefender();
 		});
-		});
-	
+		};
+	});
 	});
 };
 // This function dictates what happens when attack button pressed
@@ -134,7 +134,7 @@ function checkGameStatus () {
 			defeated++;
 			console.log("Defeated" + defeated);
 		$("#fifthRow").html("<p>You defeated " + currentEnemyName + ".</p><p>Click another enemy to continue.</p>");
-		$(".backRed").off("click");
+		currentEnemyName = undefined;
 
 };
 
@@ -159,6 +159,9 @@ function checkGameStatus () {
 };
 
 $(document).ready(function(){
+	var topTitle = $("<h1>Star Wars Battle</h1>").show().fadeIn(3000).show().fadeIn(3000);
+	var makeAChoice = $("<h3 class='startText'>Select Your Character</h3>").show().fadeIn(3000);
+	$("#backG").prepend(topTitle);
 	//This will control autoplay of Theme once you get to site.
 	$("#backG").append("<audio class='startUpAudio' src='assets/audio/startupmusic.mp3' autoplay></audio>");
 	// Puts starting items on screen
@@ -166,7 +169,8 @@ $(document).ready(function(){
 	generateCharacter("#firstRow", "leia");
 	generateCharacter("#firstRow", "palp");
 	generateCharacter("#firstRow", "vader");
-	$("#firstRow").append("<h3 class='startText'>Select Your Character</h3>");
+	$("#firstRow").append(makeAChoice);
+	
 	
 	});
 	
