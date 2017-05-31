@@ -33,7 +33,7 @@ var characters = {
 			health: 150,
 			chooseSound: new Audio('assets/audio/palp-select.mp3'),
 			attackSound: new Audio('assets/audio/palp-attack.wav'),
-			winSound:new Audio('assets/audio/palp-win.wav'),
+			winSound:new Audio('assets/audio/palp-win.WAV'),
 			value: "palp"
 				},
 		leia: {
