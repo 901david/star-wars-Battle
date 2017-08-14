@@ -1,5 +1,15 @@
-
-
 # Star Wars Battle game
 
-This game was created using Html, Bootstrap, Css, Javascript & JQuery.  Choose your character, and then face all of the other characters in a fight to the death. The only way to win at this game is to defeat all other enemies.  Each time you successfully attack your enemy your power is increased.  See if you can win with all characters!
+This web application was created as an enjoyable single player game.  When the game first starts we have 4 characters that the user is able to choose from.  
+![Shot1](readmeimages/shot1.png)
+
+Once a character is selected as the character that the user will be playing as, all other characters become enemies.  The user must choose which characters to battle in the correct order to be able to defeat all characters and win the game, or utterly fail.
+![Shot2](readmeimages/shot2png)
+![Shot3](readmeimages/shot3.png)
+
+## Technologies Used
+* Html
+* Bootstrap
+* Css
+* Javascript
+* JQuery
